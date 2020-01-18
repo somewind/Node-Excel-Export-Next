@@ -145,8 +145,8 @@ var addStringCell = function(sheet, cellRef, value, styleIndex){
   if (typeof value ==='string'){
     value = value.replace(/&/g, "&amp;").replace(/'/g, "&apos;").replace(/>/g, "&gt;").replace(/</g, "&lt;");
   }
-  var i = sheet.shareStrings.get(value, -1);
-	if ( i< 0){
+  var i = sheet.shareStrings.get(value);
+  if (i === undefined){
     i = sheet.shareStrings.length;
   	sheet.shareStrings.add(value, i);
     sheet.convertedShareStrings += "<x:si><x:t>"+value+"</x:t></x:si>";
